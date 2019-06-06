@@ -55,6 +55,7 @@ public class ProtocolListenerWrapper implements Protocol {
 
     @Override
     public <T> Exporter<T> export(Invoker<T> invoker) throws RpcException {
+        // TODO: 2019/5/30 当 invoker.url.protocl = registry ，跳过，本地暴露服务不会符合这个判断。在远程暴露服务会符合暴露该判断 
         if (REGISTRY_PROTOCOL.equals(invoker.getUrl().getProtocol())) {
             return protocol.export(invoker);
         }

@@ -43,6 +43,9 @@ public class InjvmProtocol extends AbstractProtocol implements Protocol {
     public static final String NAME = LOCAL_PROTOCOL;
 
     public static final int DEFAULT_PORT = 0;
+    /**
+     * 单例。在 Dubbo SPI 中，被初始化，有且仅有一次。
+     */
     private static InjvmProtocol INSTANCE;
 
     public InjvmProtocol() {

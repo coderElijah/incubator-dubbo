@@ -92,6 +92,11 @@ public class DubboProtocol extends AbstractProtocol {
     /**
      * <host:port,Exchanger>
      */
+    /**
+     * 通信服务器集合
+     *
+     * key: 服务器地址。格式为：host:port
+     */
     private final Map<String, ExchangeServer> serverMap = new ConcurrentHashMap<>();
     /**
      * <host:port,Exchanger>
@@ -284,6 +289,7 @@ public class DubboProtocol extends AbstractProtocol {
 
         // export service.
         String key = serviceKey(url);
+        // TODO: 2019/6/3 双向持有exportermap expoter 中添加map引用 map中添加exproter
         DubboExporter<T> exporter = new DubboExporter<T>(invoker, key, exporterMap);
         exporterMap.put(key, exporter);
 
